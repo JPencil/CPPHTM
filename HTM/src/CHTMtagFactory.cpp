@@ -17,7 +17,7 @@ CHTMtagFactory* CHTMtagFactory::Factory(  ) {
 	return sInstance;
 }
 
-CHTM CHTMtagFactory::create( htmTag_t tag ) {
+CHTM* CHTMtagFactory::create( htmTag_t tag ) {
 	//TODO add validation later
 	CHTM* htm = NULL;
 	if( tag < HTM_SEC_END ) {
@@ -25,7 +25,7 @@ CHTM CHTMtagFactory::create( htmTag_t tag ) {
 	} else {
 	}
 
-	return *htm;
+	return htm;
 }
 
 CHTMtagFactory::~CHTMtagFactory() {

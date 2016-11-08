@@ -10,5 +10,6 @@
 
 int main( void ) {
 	HTML(0);
+	HEAD(0);
 	return 0;
 }

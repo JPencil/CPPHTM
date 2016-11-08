@@ -29,8 +29,19 @@ void CHTM::connect( CHTM* htm ) {
 	else        chain = htm;
 }
 
-void CHTM::out(  ) {
+void CHTM::link( CHTM* htm ) {
+	if( next ) next->link( htm );
+	else       next = htm;
+}
 
+CHTM CHTM::print(  ) {
+    printf("\n<%s> ", strTag(tag) );
+    if( next ) next->print();
+    printf("\n</%s> ", strTag(tag) );
+}
+
+char* CHTM::strTag( htmTag_t tag ) {
+	return sTags[ tag ];
 }
 
 CHTM::~CHTM() {

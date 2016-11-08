@@ -13,15 +13,18 @@
 class CHTM {
 private:
 	static CHTM* sHTMchain;
+	void connect( CHTM* htm );
 
 protected:
 	htmTag_t   tag;
 	CHTM*      chain;
 	CHTM*      next;
-	void connect( CHTM* htm );
-	virtual void out( );
-public:
 	CHTM( htmTag_t tag );
+	char*  strTag( htmTag_t tag );
+
+public:
+    void   link( CHTM* htm );
+	virtual CHTM print( );
 	virtual ~CHTM();
 };
 

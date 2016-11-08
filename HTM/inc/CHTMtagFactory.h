@@ -19,7 +19,7 @@ protected:
 
 public:
 	static CHTMtagFactory* Factory( );
-	CHTM   create( htmTag_t tag );
+	CHTM*  create( htmTag_t tag );
 	virtual ~CHTMtagFactory();
 };
 

@@ -12,9 +12,17 @@ CHTMsection::CHTMsection( htmTag_t tag )
 	this->child = NULL;
 }
 
-CHTM CHTMsection::add( CHTM* htm ) {
+CHTM CHTMsection::add( ) {
+	return *this;
+}
+
+CHTM CHTMsection::print( ) {
+    printf("\n<%s> ", CHTM::strTag( tag ) );
+    if( child ) child->CHTM::print( );
+    printf("\n</%s> ", CHTM::strTag( tag ) );
 }
 
 CHTMsection::~CHTMsection() {
+
 }
 

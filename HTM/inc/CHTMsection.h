@@ -16,7 +16,8 @@ protected:
 
 public:
 	CHTMsection( htmTag_t tag );
-	virtual CHTM add( CHTM* htm );
+	virtual CHTM add(  );
+	virtual CHTM print( );
 	virtual ~CHTMsection();
 };
 
