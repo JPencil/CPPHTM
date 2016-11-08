@@ -13,9 +13,15 @@ CHTM::CHTM( htmTag_t tag ) {
 }
 
 void CHTM::connect( CHTM* htm ) {
+	if( next ) next->connect( htm );
+	else       next = htm;
+}
+
+void CHTM::print( int out ) {
 
 }
 
 CHTM::~CHTM() {
+	if( next ) delete next;
 }
 

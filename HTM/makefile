@@ -3,13 +3,13 @@ VER = 1.0
 SHO = lib$(PRJ).so
 OUT = $(SHO).$(VER)
 
-WRKSPC = /Users/admin/Developer/SCM/WOD
-PRJDIR = $(WRKSPC)/$(PRJ)
+WRKSPC = $(PWD)
+PRJDIR = $(WRKSPC)
 INCDIR = $(PRJDIR)/inc
 SRCDIR = $(PRJDIR)/src
 OBJDIR = $(PRJDIR)/obj
 OUTDIR = $(PRJDIR)/out
-LIBDIR = $(WRKSPC)/LIB
+LIBDIR = ../LIB
 
 SRCFLS = $(wildcard $(SRCDIR)/*.cpp)
 OBJFLS = $(patsubst $(SRCDIR)/%.cpp, $(OBJDIR)/%.o, $(SRCFLS))
@@ -24,7 +24,7 @@ LN = ln -s
 CC = g++
 
 SOFLAGS = -Wall -fPIC -c
-SHFLAGS = -shared -Wl -L$(LIBDIR)
+SHFLAGS = -shared -L$(LIBDIR)
 
 $(SHO): $(LIBDIR) $(OUT) 
 	$(LN) $(OUTDIR)/$(OUT) $(LIBDIR)/$(SHO)
@@ -45,5 +45,5 @@ $(LIBDIR):
 	$(MD) $(LIBDIR)
 
 clean:
-	$(RM) -rf $(OBJDIR) $(OUTDIR) $(LIBDIR)/$(SHO)
+	$(RM) -rf $(OBJDIR)/* $(OUTDIR)/* $(LIBDIR)/$(SHO)
 	

@@ -12,10 +12,11 @@
 
 class CHTMcomposite : public CHTM {
 protected:
-
+	CHTM*          child;
+	CHTMcomposite( htmTag_t tag );
 
 public:
-	CHTMcomposite( htmTag_t tag );
+	virtual void add( CHTM* htm );
 	virtual ~CHTMcomposite();
 };
 

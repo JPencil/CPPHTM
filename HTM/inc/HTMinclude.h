@@ -9,6 +9,8 @@
 #define HTM_INC_HTMINCLUDE_H_
 
 #include <stdlib.h>
+#include <unistd.h>
+
 
 #include "HTMlimits.h"
 #include "HTMdefines.h"

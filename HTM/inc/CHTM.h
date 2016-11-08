@@ -18,10 +18,9 @@ protected:
 	htmTag_t   tag;
 
 	CHTM( htmTag_t tag );
-
-	void connect( CHTM* htm );
-
 public:
+	void connect( CHTM* htm );
+	virtual void print( int out );
 	virtual ~CHTM();
 };
 

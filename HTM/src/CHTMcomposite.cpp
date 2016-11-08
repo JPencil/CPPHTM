@@ -9,9 +9,15 @@
 
 CHTMcomposite::CHTMcomposite( htmTag_t tag )
              : CHTM( tag ) {
-
+	this->child = NULL;
 }
 
 CHTMcomposite::~CHTMcomposite() {
+
+}
+
+void CHTMcomposite::add( CHTM* htm ) {
+	if( child ) child->connect( htm );
+	else        child = htm;
 }
 
