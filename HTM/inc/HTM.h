@@ -9,14 +9,10 @@
 #define HTM_INC_HTM_H_
 
 #include "CHTM.h"
+#include "CHTMtagFactory.h"
 
-#define HTML(attr)  (new CHTM("html"))
-#define HEAD(attr)  (new CHTM("head"))
-#define BODY(attr)  (new CHTM("body"))
-#define H1(attr)    (new CHTM("h1"))
-#define H2(attr)    (new CHTM("h2"))
+#define HTM_TAG_FACTORY( tag ) CHTMtagFactory::Factory()->create( tag )
 
-#define HTMLPRINT()  CHTM::Print()
-
+#define HTML( att )   HTM_TAG_FACTORY( HTM_TAG_HTML )
 
 #endif /* HTM_INC_HTM_H_ */

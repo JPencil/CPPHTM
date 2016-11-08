@@ -7,17 +7,21 @@
 
 #include "CHTM.h"
 
+static char* sTags[] = {
+		"html",
+		"head",
+		"body",
+		 NULL
+};
+
 CHTM* CHTM::sHTMchain = NULL;
 
-CHTM::CHTM( char* tag ) {
+CHTM::CHTM( htmTag_t tag ) {
 	this->tag   = tag;   //TODO: create string object
 	this->chain = NULL;  //use to chain all CHTM objects for cleaning
+	this->next  = NULL;  //use to chain all CHTM objects for cleaning
 	if( sHTMchain ) sHTMchain->connect( this );
 	else            sHTMchain = this;
-}
-
-void CHTM::Print(void) {
-	if( sHTMchain ) sHTMchain->out();
 }
 
 void CHTM::connect( CHTM* htm ) {
@@ -26,9 +30,6 @@ void CHTM::connect( CHTM* htm ) {
 }
 
 void CHTM::out(  ) {
-	printf("\n<%s>",tag);
-	if( chain ) chain->out();
-	//printf("\n</%s>",tag);
 
 }
 

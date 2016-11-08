@@ -15,13 +15,13 @@ private:
 	static CHTM* sHTMchain;
 
 protected:
-	char*      tag;
+	htmTag_t   tag;
 	CHTM*      chain;
+	CHTM*      next;
 	void connect( CHTM* htm );
 	virtual void out( );
 public:
-	CHTM( char* tag );
-	static void Print();
+	CHTM( htmTag_t tag );
 	virtual ~CHTM();
 };
 
