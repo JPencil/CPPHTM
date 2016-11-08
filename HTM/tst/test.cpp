@@ -6,4 +6,14 @@
  */
 
 
+#include "HTM.h"
 
+int main( void ) {
+	HTML(0);
+    HEAD(0);
+	H1(0);
+    H2(0);
+	BODY(0);
+	HTMLPRINT();
+	return 0;
+}
