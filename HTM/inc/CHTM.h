@@ -2,7 +2,7 @@
  * CHTM.h
  *
  *  Created on: 6 Nov 2016
- *      Author: admin
+ *      Author: JPencil
  */
 
 #ifndef HTM_INC_CHTM_H_
@@ -11,28 +11,23 @@
 #include "HTMinclude.h"
 
 class CHTM {
-friend class CHTMbuilder;
 
 private:
-	static CHTM*   sHTMchain;
-	static CHTM*   sHTMnext;
-	static tagID_t sHTMgenID;
-	static void Initialize( CHTM* htm );
+	static CHTM*   sChain;
+	static CHTM*   sNext;
+	static tagID_t sGenID;
 
 protected:
 	tagID_t  ID;
-	CHTM*    chain;
 	CHTM*    next;
 	htmTag_t tag;
-	char*    strTag( htmTag_t tag );
+	CHTM( htmTag_t tag );
+	const char* strTag( htmTag_t tag );
 
 public:
-	CHTM( htmTag_t tag );
 	virtual CHTM print( );
 	virtual ~CHTM();
 
-	static void  Print( );
-	static CHTM* Document();
 };
 
 #endif /* HTM_INC_CHTM_H_ */

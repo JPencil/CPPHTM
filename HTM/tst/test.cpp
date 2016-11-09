@@ -6,28 +6,16 @@
  */
 
 
-#include "CHTMbuilder.h"
+#include "CHTMdoc.h"
 
-#define HTML_BUILDER     (CHTMbuilder::Builder())
-
-#define SET_DOC( ttl )   ( HTML_BUILDER->initialize( new CHTMdoc(ttl) ) )
-#define GET_DOC( doc )   ( doc = (CHTMdoc*)CHTM::Document() )
-
-#define HTML(attr)       ( HTML_BUILDER->create(HTM_TAG_HTML) )
-#define HEAD(attr)       ( HTML_BUILDER->create(HTM_TAG_HEAD) )
-#define BODY(attr)       ( HTML_BUILDER->create(HTM_TAG_BODY) )
+#define DOCUMENT()  (new CHTMdoc())
+#define HTML(attr)
+#define HEAD(attr)
+#define BODY(attr)
 
 int main( void ) {
-	CHTMdoc* doc;
 
-	SET_DOC("Title");
-	HTML(0);
-	HEAD(0);
-	BODY(0);
-	GET_DOC(doc);
-
-	doc->print();
-
+	DOCUMENT();
     printf("\n\n");
 	return 0;
 }

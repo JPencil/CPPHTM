@@ -7,7 +7,7 @@
 
 #include "CHTM.h"
 
-static char* sTags[] = {
+static const char* sTags[] = {
 		"!DOCTYPE html",
 		"html",
 		"head",
@@ -18,27 +18,19 @@ static char* sTags[] = {
 		 NULL
 };
 
-CHTM* CHTM::sHTMchain = NULL;
-CHTM* CHTM::sHTMnext  = NULL;
-tagID_t CHTM::sHTMgenID = 0;
+CHTM* CHTM::sChain = NULL;
+CHTM* CHTM::sNext  = NULL;
+tagID_t CHTM::sGenID = 0;
 
 CHTM::CHTM( htmTag_t tag ) {
 	this->tag    = tag;
-	this->chain  = NULL;
 	this->next   = NULL;
-	this->ID     = sHTMgenID++;
-	if( sHTMnext ) sHTMnext->next = this;
-	sHTMnext = this;
-	//printf("HTML created: %s", sTags[tag]);
+	this->ID     = sGenID++;
+	if( sNext ) sNext->next = this;
+	else        sChain      = this;
+	sNext = this;
 }
 
-void CHTM::Initialize( CHTM* htm ) {
-	sHTMchain = sHTMnext = htm;
-}
-
-CHTM* CHTM::Document() {
-	return sHTMchain;
-}
 
 CHTM CHTM::print(  ) {
 	printf("\n<%s>", strTag( tag ) );
@@ -46,7 +38,7 @@ CHTM CHTM::print(  ) {
 	return *this;
 }
 
-char* CHTM::strTag( htmTag_t tag ) {
+const char* CHTM::strTag( htmTag_t tag ) {
 	return sTags[ tag ];
 }
 

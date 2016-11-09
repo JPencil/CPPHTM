@@ -7,12 +7,20 @@
 
 #include "CHTMdoc.h"
 
-CHTMdoc::CHTMdoc( const char* docName )
+CHTMdoc* CHTMdoc::sChain = NULL;
+CHTMdoc::CHTMdoc( )
        : CHTM( HTM_TAG_DOCT ){
-	this->docName = docName;
-	this->htmTags = NULL;
+	this->htmTags  = NULL;
+    this->chain    = NULL;
+	if( sChain ) sChain->connect( this );
+	else         sChain = this;
 }
 
+void CHTMdoc::connect( CHTM* htm ) {
+	CHTMdoc* doc = (CHTMdoc*)htm;
+	if( chain ) chain->connect( htm );
+	else        chain = doc;
+}
 
 CHTMdoc::~CHTMdoc() {
 }

@@ -12,13 +12,15 @@
 
 class CHTMdoc : public CHTM {
 private:
+	static CHTMdoc* sChain;
+	virtual void connect( CHTM* htm );
 
 protected:
-	const char* docName;
+	CHTMdoc*    chain;
 	CHTM*       htmTags;
 
 public:
-	CHTMdoc( const char* docName );
+	CHTMdoc( );
 	virtual ~CHTMdoc();
 };
 
