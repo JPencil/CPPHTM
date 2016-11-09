@@ -6,16 +6,24 @@
  */
 
 
-#include "CHTMdoc.h"
+#include "CHTMbuilder.h"
 
-#define DOCUMENT()  (new CHTMdoc())
-#define HTML(attr)
-#define HEAD(attr)
-#define BODY(attr)
+#define BUILDER        CHTMbuilder::Builder()
+
+#define DOCUMENT(ttl)  ( (BUILDER->init( ttl ) ) )
+#define HTML(attr)     ( (BUILDER->make( HTM_TAG_HTML ) ) )
+#define HEAD(attr)     ( (BUILDER->make( HTM_TAG_HEAD ) ) )
+#define BODY(attr)     ( (BUILDER->make( HTM_TAG_BODY ) ) )
 
 int main( void ) {
 
-	DOCUMENT();
-    printf("\n\n");
+	DOCUMENT("test");
+	HTML(0);
+	HEAD(0);
+
+	DOCUMENT("test")->print();
+
+
+    printf("\n~~ END ~~ \n");
 	return 0;
 }

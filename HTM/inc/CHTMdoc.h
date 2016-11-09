@@ -11,16 +11,24 @@
 #include "CHTM.h"
 
 class CHTMdoc : public CHTM {
+friend class CHTMbuilder;
+
 private:
-	static CHTMdoc* sChain;
-	virtual void connect( CHTM* htm );
+	CHTMdoc*    docChain;
 
 protected:
-	CHTMdoc*    chain;
-	CHTM*       htmTags;
+	const char* title;
+	CHTM*       content;
+	CHTMdoc( const char* title );
 
 public:
-	CHTMdoc( );
+	virtual CHTM* add( CHTM* htm );
+
+	virtual CHTM* find( tagID_t id );
+	        CHTM* find( const char* ttl );
+
+	virtual CHTM* print( );
+
 	virtual ~CHTMdoc();
 };
 

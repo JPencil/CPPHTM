@@ -18,14 +18,19 @@ private:
 	static tagID_t sGenID;
 
 protected:
-	tagID_t  ID;
-	CHTM*    next;
+	tagID_t  id;
 	htmTag_t tag;
+	CHTM*    chain;
+	CHTM*    list;
 	CHTM( htmTag_t tag );
+
 	const char* strTag( htmTag_t tag );
 
 public:
-	virtual CHTM print( );
+	tagID_t ID();
+	virtual CHTM* link( CHTM* htm );
+	virtual CHTM* find( tagID_t id );
+	virtual CHTM* print();
 	virtual ~CHTM();
 
 };
