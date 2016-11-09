@@ -1,7 +1,7 @@
 /*
  * CHTMsection.cpp
  *
- *  Created on: 8 Nov 2016
+ *  Created on: 9 Nov 2016
  *      Author: jpencil
  */
 
@@ -9,20 +9,18 @@
 
 CHTMsection::CHTMsection( htmTag_t tag )
            : CHTM( tag ){
-	this->child = NULL;
 }
 
-CHTM CHTMsection::add( ) {
+CHTM CHTMsection::print() {
+	printf("\n<%s>", strTag( tag ) );
+	if( chain ) chain->print();
 	return *this;
 }
 
-CHTM CHTMsection::print( ) {
-    printf("\n<%s> ", CHTM::strTag( tag ) );
-    if( child ) child->CHTM::print( );
-    printf("\n</%s> ", CHTM::strTag( tag ) );
+CHTMsection CHTMsection::text( char* ) {
+	return *this;
 }
 
 CHTMsection::~CHTMsection() {
-
 }
 

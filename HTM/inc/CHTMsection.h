@@ -1,7 +1,7 @@
 /*
  * CHTMsection.h
  *
- *  Created on: 8 Nov 2016
+ *  Created on: 9 Nov 2016
  *      Author: jpencil
  */
 
@@ -11,14 +11,16 @@
 #include "CHTM.h"
 
 class CHTMsection : public CHTM {
+private:
+
 protected:
-	CHTM*   child;
 
 public:
 	CHTMsection( htmTag_t tag );
-	virtual CHTM add(  );
 	virtual CHTM print( );
 	virtual ~CHTMsection();
+	CHTMsection text( char* );
+	CHTMsection attribute( char* );
 };
 
 #endif /* HTM_INC_CHTMSECTION_H_ */

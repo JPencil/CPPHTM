@@ -11,21 +11,28 @@
 #include "HTMinclude.h"
 
 class CHTM {
+friend class CHTMbuilder;
+
 private:
-	static CHTM* sHTMchain;
-	void connect( CHTM* htm );
+	static CHTM*   sHTMchain;
+	static CHTM*   sHTMnext;
+	static tagID_t sHTMgenID;
+	static void Initialize( CHTM* htm );
 
 protected:
-	htmTag_t   tag;
-	CHTM*      chain;
-	CHTM*      next;
-	CHTM( htmTag_t tag );
-	char*  strTag( htmTag_t tag );
+	tagID_t  ID;
+	CHTM*    chain;
+	CHTM*    next;
+	htmTag_t tag;
+	char*    strTag( htmTag_t tag );
 
 public:
-    void   link( CHTM* htm );
+	CHTM( htmTag_t tag );
 	virtual CHTM print( );
 	virtual ~CHTM();
+
+	static void  Print( );
+	static CHTM* Document();
 };
 
 #endif /* HTM_INC_CHTM_H_ */

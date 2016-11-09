@@ -8,13 +8,15 @@
 #ifndef HTM_INC_HTMDEFINES_H_
 #define HTM_INC_HTMDEFINES_H_
 
-#define HTM_TAG_HTML  0
-#define HTM_TAG_HEAD  1
-#define HTM_TAG_BODY  2
+#define HTM_TAG_DOCT  0
+#define HTM_TAG_HTML  1
+#define HTM_TAG_HEAD  2
+#define HTM_TAG_BODY  3
 
-#define HTM_TAG_TITLE 3
 #define HTM_TAG_H1    4
-#define HTM_TAG_P     5
+#define HTM_TAG_H2    5
+#define HTM_TAG_H3    6
+
 
 
 #define HTM_SEC_START HTM_TAG_HTML

@@ -2,42 +2,48 @@
  * CHTM.cpp
  *
  *  Created on: 6 Nov 2016
- *      Author: admin
+ *      Author: JPencil
  */
 
 #include "CHTM.h"
 
 static char* sTags[] = {
+		"!DOCTYPE html",
 		"html",
 		"head",
 		"body",
+		"h1",
+		"h2",
+		"h3",
 		 NULL
 };
 
 CHTM* CHTM::sHTMchain = NULL;
+CHTM* CHTM::sHTMnext  = NULL;
+tagID_t CHTM::sHTMgenID = 0;
 
 CHTM::CHTM( htmTag_t tag ) {
-	this->tag   = tag;   //TODO: create string object
-	this->chain = NULL;  //use to chain all CHTM objects for cleaning
-	this->next  = NULL;  //use to chain all CHTM objects for cleaning
-	if( sHTMchain ) sHTMchain->connect( this );
-	else            sHTMchain = this;
+	this->tag    = tag;
+	this->chain  = NULL;
+	this->next   = NULL;
+	this->ID     = sHTMgenID++;
+	if( sHTMnext ) sHTMnext->next = this;
+	sHTMnext = this;
+	//printf("HTML created: %s", sTags[tag]);
 }
 
-void CHTM::connect( CHTM* htm ) {
-	if( chain ) chain->connect( htm );
-	else        chain = htm;
+void CHTM::Initialize( CHTM* htm ) {
+	sHTMchain = sHTMnext = htm;
 }
 
-void CHTM::link( CHTM* htm ) {
-	if( next ) next->link( htm );
-	else       next = htm;
+CHTM* CHTM::Document() {
+	return sHTMchain;
 }
 
 CHTM CHTM::print(  ) {
-    printf("\n<%s> ", strTag(tag) );
-    if( next ) next->print();
-    printf("\n</%s> ", strTag(tag) );
+	printf("\n<%s>", strTag( tag ) );
+	if( next ) next->print();
+	return *this;
 }
 
 char* CHTM::strTag( htmTag_t tag ) {
@@ -45,6 +51,4 @@ char* CHTM::strTag( htmTag_t tag ) {
 }
 
 CHTM::~CHTM() {
-	if( chain ) delete chain;
 }
-
