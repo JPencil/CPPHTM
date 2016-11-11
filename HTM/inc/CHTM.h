@@ -10,20 +10,26 @@
 
 #include "HTMinclude.h"
 
-class CHTM {
+typedef enum {
+	eHtmRoot=0,
+	eHtmBranch,
+	eHtmLeaf
+} htmComp_t;
 
+class CHTM {
 private:
 	static CHTM*   sChain;
 	static CHTM*   sNext;
 	static tagID_t sGenID;
 
 protected:
-	tagID_t  id;
-	htmTag_t tag;
-	CHTM*    chain;
-	CHTM*    list;
-	CHTM( htmTag_t tag );
+	tagID_t   id;
+	htmTag_t  tag;
+	htmComp_t comp;
+	CHTM*     chain;
+	CHTM*     list;
 
+	CHTM( htmTag_t tag, htmComp_t comp  );
 	const char* strTag( htmTag_t tag );
 
 public:

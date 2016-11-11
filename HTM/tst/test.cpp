@@ -6,24 +6,25 @@
  */
 
 
-#include "CHTMbuilder.h"
+#include "CHTM.h"
 
-#define BUILDER        CHTMbuilder::Builder()
+#if 0
+#define BUILDER           CHTMbuilder::Builder()
 
-#define DOCUMENT(ttl)  ( (BUILDER->init( ttl ) ) )
+#define DOCUMENT(ttl)  ( (BUILDER->open(ttl)) )
 #define HTML(attr)     ( (BUILDER->make( HTM_TAG_HTML ) ) )
 #define HEAD(attr)     ( (BUILDER->make( HTM_TAG_HEAD ) ) )
 #define BODY(attr)     ( (BUILDER->make( HTM_TAG_BODY ) ) )
 
+#endif
+
 int main( void ) {
 
+#if 0
 	DOCUMENT("test");
 	HTML(0);
 	HEAD(0);
-
-	DOCUMENT("test")->print();
-
-
+#endif
     printf("\n~~ END ~~ \n");
 	return 0;
 }

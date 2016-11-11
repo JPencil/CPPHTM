@@ -22,8 +22,9 @@ CHTM* CHTM::sChain = NULL;
 CHTM* CHTM::sNext  = NULL;
 tagID_t CHTM::sGenID = 0;
 
-CHTM::CHTM( htmTag_t tag ) {
+CHTM::CHTM( htmTag_t tag, htmComp_t comp ) {
 	this->tag    = tag;
+	this->comp   = comp;
 	this->list   = NULL;
 	this->chain  = NULL;
 	this->id     = sGenID++;
