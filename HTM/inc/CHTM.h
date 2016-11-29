@@ -10,12 +10,6 @@
 
 #include "HTMinclude.h"
 
-typedef enum {
-	eHtmRoot=0,
-	eHtmBranch,
-	eHtmLeaf
-} htmComp_t;
-
 class CHTM {
 private:
 	static CHTM*   sChain;
@@ -25,17 +19,14 @@ private:
 protected:
 	tagID_t   id;
 	htmTag_t  tag;
-	htmComp_t comp;
 	CHTM*     chain;
 	CHTM*     list;
 
-	CHTM( htmTag_t tag, htmComp_t comp  );
+	CHTM( htmTag_t tag );
 	const char* strTag( htmTag_t tag );
 
 public:
 	tagID_t ID();
-	virtual CHTM* link( CHTM* htm );
-	virtual CHTM* find( tagID_t id );
 	virtual CHTM* print();
 	virtual ~CHTM();
 

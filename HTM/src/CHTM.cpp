@@ -22,9 +22,8 @@ CHTM* CHTM::sChain = NULL;
 CHTM* CHTM::sNext  = NULL;
 tagID_t CHTM::sGenID = 0;
 
-CHTM::CHTM( htmTag_t tag, htmComp_t comp ) {
+CHTM::CHTM( htmTag_t tag ) {
 	this->tag    = tag;
-	this->comp   = comp;
 	this->list   = NULL;
 	this->chain  = NULL;
 	this->id     = sGenID++;
@@ -37,18 +36,6 @@ tagID_t CHTM::ID() {
 	return id;
 }
 
-CHTM* CHTM::find( tagID_t id ) {
-	if( this->id == id ) return this;
-	else
-		if( chain ) return chain->find( id );
-	return NULL;
-}
-
-CHTM* CHTM::link( CHTM* htm ) {
-	if( list ) list->link( htm );
-	else       list = htm;
-	return htm;
-}
 
 CHTM* CHTM::print() {
 	printf("\n%s", strTag( tag ) );
