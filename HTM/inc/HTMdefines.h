@@ -17,8 +17,6 @@
 #define HTM_TAG_H2    5
 #define HTM_TAG_H3    6
 
-
-
 #define HTM_SEC_START HTM_TAG_HTML
 #define HTM_SEC_END   HTM_TAG_BODY
 

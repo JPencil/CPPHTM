@@ -14,17 +14,29 @@ class CHTM {
 private:
 	static CHTM*   sHead;
 	static CHTM*   sTail;
+	static CHTM*   sStack;
 
 protected:
+	userID_t       ID;
 	htmTag_t       tag;
 	CHTM*          chain;
+	CHTM*          next;
+	CHTM*          parent;
 
-	const char* strTag(  );
+	CHTM* pop();
+	void  push( CHTM* htm );
+	const char* htmlTag( );
+	CHTM* find( userID_t id );
+	CHTM( htmTag_t tag, userID_t id );
 
 public:
-	CHTM( htmTag_t tag );
+	static CHTM* Make( htmTag_t tag, userID_t id );
 	CHTM  print();
+	CHTM  open();
+	CHTM  close();
 	virtual ~CHTM();
+
+	void printParent();
 
 };
 

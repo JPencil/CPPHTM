@@ -8,7 +8,7 @@
 #ifndef HTM_INC_HTMTYPES_H_
 #define HTM_INC_HTMTYPES_H_
 
-typedef unsigned char  docID_t;
+typedef unsigned short userID_t;
 typedef unsigned short tagID_t;
 
 typedef unsigned char htmTag_t;
