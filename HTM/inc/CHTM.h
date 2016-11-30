@@ -12,22 +12,18 @@
 
 class CHTM {
 private:
-	static CHTM*   sChain;
-	static CHTM*   sNext;
-	static tagID_t sGenID;
+	static CHTM*   sHead;
+	static CHTM*   sTail;
 
 protected:
-	tagID_t   id;
-	htmTag_t  tag;
-	CHTM*     chain;
-	CHTM*     list;
+	htmTag_t       tag;
+	CHTM*          chain;
 
-	CHTM( htmTag_t tag );
-	const char* strTag( htmTag_t tag );
+	const char* strTag(  );
 
 public:
-	tagID_t ID();
-	virtual CHTM* print();
+	CHTM( htmTag_t tag );
+	CHTM  print();
 	virtual ~CHTM();
 
 };

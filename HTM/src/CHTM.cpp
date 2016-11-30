@@ -18,35 +18,29 @@ static const char* sTags[] = {
 		 NULL
 };
 
-CHTM* CHTM::sChain = NULL;
-CHTM* CHTM::sNext  = NULL;
-tagID_t CHTM::sGenID = 0;
+CHTM* CHTM::sHead = NULL;
+CHTM* CHTM::sTail = NULL;
 
 CHTM::CHTM( htmTag_t tag ) {
 	this->tag    = tag;
-	this->list   = NULL;
 	this->chain  = NULL;
-	this->id     = sGenID++;
-	if( sNext ) sNext->chain = this;
-	else        sChain       = this;
-	sNext = this;
-}
-
-tagID_t CHTM::ID() {
-	return id;
+	if( sTail ) sTail->chain = this;
+	else        sHead = this;
+	sTail = this;
 }
 
 
-CHTM* CHTM::print() {
-	printf("\n%s", strTag( tag ) );
-	if( list ) list->print();
-	return this;
+CHTM CHTM::print() {
+	printf("\n%s", strTag() );
+	if( chain ) chain->print();
+	return *this;
 }
 
 
-const char* CHTM::strTag( htmTag_t tag ) {
+const char* CHTM::strTag( ) {
 	return sTags[ tag ];
 }
 
 CHTM::~CHTM() {
+
 }
