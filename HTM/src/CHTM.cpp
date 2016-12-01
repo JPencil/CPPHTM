@@ -18,8 +18,8 @@ static const char* sTags[] = {
 		 NULL
 };
 
-CHTM* CHTM::sHead = NULL;
-CHTM* CHTM::sTail = NULL;
+CHTM* CHTM::sHead  = NULL;
+CHTM* CHTM::sTail  = NULL;
 CHTM* CHTM::sStack = NULL;
 
 CHTM* CHTM::Make( htmTag_t tag, userID_t id ) {
@@ -32,8 +32,9 @@ CHTM::CHTM( htmTag_t tag, userID_t id ) {
 	this->ID     = id;
 	this->tag    = tag;
 	this->chain  = NULL;
-	this->next   = NULL;
+	this->fifo   = NULL;
 	this->parent = sStack;
+
 	if( sTail ) sTail->chain = this;
 	else        sHead = this;
 	sTail = this;
@@ -41,14 +42,14 @@ CHTM::CHTM( htmTag_t tag, userID_t id ) {
 
 CHTM* CHTM::pop() {
 	CHTM* htm = sStack ? sStack : NULL;
-	if( htm ) 	sStack = sStack->next;
+	if( htm ) 	sStack = sStack->fifo;
 	return htm;
 }
 
 void CHTM::push( CHTM* htm ) {
 	CHTM* tmp = sStack;
 	sStack = htm;
-	sStack->next = tmp;
+	sStack->fifo = tmp;
 }
 
 CHTM* CHTM::find( userID_t id ) {
@@ -77,7 +78,7 @@ CHTM CHTM::close() {
 
 
 void CHTM::printParent() {
-	printf("\n%s <-- %s", parent ? parent->htmlTag() : "No Parent", htmlTag() );
+	printf("\n%s <-- %s%d", parent ? parent->htmlTag() : "No Parent", htmlTag(), ID );
 }
 
 

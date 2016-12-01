@@ -20,7 +20,7 @@ protected:
 	userID_t       ID;
 	htmTag_t       tag;
 	CHTM*          chain;
-	CHTM*          next;
+	CHTM*          fifo;
 	CHTM*          parent;
 
 	CHTM* pop();
