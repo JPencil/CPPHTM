@@ -12,18 +12,25 @@
 
 class CDocument {
 private:
+	static CDocument* sHead;
+	static CDocument* sTail;
+	static CDocument* sFifo;
 
 protected:
-	CTag* head;
-	CTag* tail;
-	CTag* stack;
+	docID_t    did;
+	CDocument* chain;
+	CDocument* fifo;
+
+	CTag*      tags;
+	CTag*      last;
+	CTag*      stack;
 
 	void  push( CTag* tag );
 	CTag* pop();
 
 public:
-	CDocument();
-	CTag* addTag( tagID_t tid, userID_t uid );
+	CDocument( docID_t did );
+	CTag* addTag( tagID_t tid, usrID_t uid );
 	CTag* findTag( tagID_t tid );
 	virtual ~CDocument();
 };

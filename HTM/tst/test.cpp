@@ -4,7 +4,7 @@
  *  Created on: 6 Nov 2016
  *      Author: admin
  */
-#include "CHTM.h"
+#include "CDocument.h"
 
 #define CREATE(tag,id) (*(CHTM::Make(tag,id)))
 
@@ -17,6 +17,8 @@
 #define PRINT(id)  (CREATE(0,id)).print()
 
 int main( void ) {
+
+	CDocument *doc = new CDocument();
 
 
     printf("\n~~ END ~~ \n");

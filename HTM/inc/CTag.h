@@ -14,15 +14,15 @@ class CTag {
 private:
 
 protected:
-	userID_t       uid;
-	tagID_t        tid;
-	CTag*          chain;
-	CTag*          fifo;
-	CTag*          parent;
+	usrID_t  uid;
+	tagID_t  tid;
+	CTag*    chain;
+	CTag*    fifo;
+	CTag*    parent;
 
 	const char* htmlTag( );
-	CTag* find( userID_t id );
-	CTag( tagID_t tid, userID_t uid );
+	CTag* find( usrID_t id );
+	CTag( tagID_t tid, usrID_t uid );
 
 	void  setParent( CTag* tag );
     CTag* connect( CTag* tag );

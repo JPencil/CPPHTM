@@ -19,7 +19,7 @@ static const char* sTags[] = {
 };
 
 
-CTag::CTag( tagID_t tid, userID_t uid ) {
+CTag::CTag( tagID_t tid, usrID_t uid ) {
 	this->uid    = uid;
 	this->tid    = tid;
 	this->chain  = NULL;
@@ -28,7 +28,7 @@ CTag::CTag( tagID_t tid, userID_t uid ) {
 
 }
 
-CTag* CTag::find( userID_t uid ) {
+CTag* CTag::find( usrID_t uid ) {
 	if( this->uid == uid ) return this;
 	else {
 		if( chain ) return chain->find( uid );

@@ -7,11 +7,22 @@
 
 #include "CDocument.h"
 
-CDocument::CDocument() {
-	this->head   = NULL;
-	this->tail   = NULL;
+CDocument* CDocument::sHead  = NULL;
+CDocument* CDocument::sTail  = NULL;
+CDocument* CDocument::sFifo  = NULL;
+
+CDocument::CDocument( docID_t did ) {
+	this->did    = did;
+	this->chain  = NULL;
+	this->fifo   = NULL;
+
+	this->tags   = NULL;
+	this->last   = NULL;
 	this->stack  = NULL;
 
+	if( sHead ) sTail->chain = this;
+	else sHead = sTail = this;
+	sTail = this;
 }
 
 CTag* CDocument::pop() {
@@ -26,17 +37,17 @@ void CDocument::push( CTag* tag ) {
 	stack->fifo = tmp;
 }
 
-CTag* CDocument::findTag( userID_t uid ) {
-	if( head ) return head->find( uid );
+CTag* CDocument::findTag( usrID_t uid ) {
+	if( tags ) return tags->find( uid );
 	else       return NULL;
 }
 
-CTag* CDocument::addTag( tagID_t tid, userID_t uid ) {
+CTag* CDocument::addTag( tagID_t tid, usrID_t uid ) {
 	CTag* tag = findTag( uid );
 	if( !tag ) {
 		tag = new CTag( tid, uid );
-		if( head ) tail = tail->connect( tag );
-		else       head = tail = tag;
+		if( tags ) last = last->connect( tag );
+		else       tags = last = tag;
 	}//endif
 	return tag;
 }
