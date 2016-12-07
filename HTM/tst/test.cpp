@@ -18,28 +18,6 @@
 
 int main( void ) {
 
-	HTML(0).open();
-		HEAD(1).open();
-			H1(2).open();
-				H2(6);
-			H1(2).close();
-		HEAD(1).close();
-		BODY(3).open();
-			H2(4);
-		BODY(3).close();
-	HTML(0).close();
-
-	PRINT(0);
-
-#if 1
-	HEAD(1).printParent();
-	BODY(2).printParent();
-	BODY(3).printParent();
-	BODY(4).printParent();
-	BODY(6).printParent();
-#endif
-
-
 
     printf("\n~~ END ~~ \n");
 	return 0;

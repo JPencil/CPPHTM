@@ -12,25 +12,22 @@
 
 class CTag {
 private:
-	static CTag*   sHead;
-	static CTag*   sTail;
-	static CTag*   sStack;
 
 protected:
-	userID_t       ID;
-	htmTag_t       tag;
+	userID_t       uid;
+	tagID_t        tid;
 	CTag*          chain;
 	CTag*          fifo;
 	CTag*          parent;
 
-	CTag* pop();
-	void  push( CTag* htm );
 	const char* htmlTag( );
 	CTag* find( userID_t id );
-	CTag( htmTag_t tag, userID_t id );
+	CTag( tagID_t tid, userID_t uid );
+
+	void  setParent( CTag* tag );
+    CTag* connect( CTag* tag );
 
 public:
-	static CTag* Make( htmTag_t tag, userID_t id );
 	CTag  print();
 	CTag  open();
 	CTag  close();

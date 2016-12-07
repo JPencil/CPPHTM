@@ -12,7 +12,6 @@ typedef unsigned short userID_t;
 typedef unsigned short tagID_t;
 typedef unsigned short attID_t;
 
-typedef unsigned char htmTag_t;
 
 
 

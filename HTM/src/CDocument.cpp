@@ -8,11 +8,41 @@
 #include "CDocument.h"
 
 CDocument::CDocument() {
-	// TODO Auto-generated constructor stub
+	this->head   = NULL;
+	this->tail   = NULL;
+	this->stack  = NULL;
 
 }
 
+CTag* CDocument::pop() {
+	CTag* tag = stack ? stack : NULL;
+	if( tag ) 	stack = stack->fifo;
+	return tag;
+}
+
+void CDocument::push( CTag* tag ) {
+	CTag* tmp = stack;
+	stack = tag;
+	stack->fifo = tmp;
+}
+
+CTag* CDocument::findTag( userID_t uid ) {
+	if( head ) return head->find( uid );
+	else       return NULL;
+}
+
+CTag* CDocument::addTag( tagID_t tid, userID_t uid ) {
+	CTag* tag = findTag( uid );
+	if( !tag ) {
+		tag = new CTag( tid, uid );
+		if( head ) tail = tail->connect( tag );
+		else       head = tail = tag;
+	}//endif
+	return tag;
+}
+
+
 CDocument::~CDocument() {
-	// TODO Auto-generated destructor stub
+
 }
 
