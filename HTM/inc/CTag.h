@@ -8,29 +8,33 @@
 #ifndef HTM_INC_CTAG_H_
 #define HTM_INC_CTAG_H_
 
-#include "HTMinclude.h"
+#include "CHTM.h"
 
-class CTag {
+class CTag : public CHTM {
+friend class CDocument;
+
 private:
 
 protected:
-	usrID_t  uid;
-	tagID_t  tid;
-	CTag*    chain;
-	CTag*    fifo;
-	CTag*    parent;
+	usrID_t    uid;
+	tagID_t    tid;
+	CTag*      chain;
+	CTag*      next;
+	CHTM*      doc;
+
+	CTag( usrID_t uid, tagID_t tid, CHTM* doc );
 
 	const char* htmlTag( );
 	CTag* find( usrID_t id );
-	CTag( tagID_t tid, usrID_t uid );
 
 	void  setParent( CTag* tag );
     CTag* connect( CTag* tag );
 
 public:
+
+    CTag  open();
+
 	CTag  print();
-	CTag  open();
-	CTag  close();
 	virtual ~CTag();
 
 	void printParent();

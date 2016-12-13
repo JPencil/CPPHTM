@@ -18,7 +18,7 @@
 #include "HTMdefines.h"
 #include "HTMtypes.h"
 
-
+#define Print printf
 
 
 #endif /* HTM_INC_HTMINCLUDE_H_ */

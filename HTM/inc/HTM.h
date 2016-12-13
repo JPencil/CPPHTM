@@ -12,13 +12,5 @@
 #include "CHTMsection.h"
 #include "CHTMtagFactory.h"
 
-#if 0
-#define HTM_TAG_FACTORY( tag ) (CHTMtagFactory::Factory()->create( tag ))
-
-#define HTML( att )   (*((CHTM*)HTM_TAG_FACTORY( HTM_TAG_HTML )))
-#define HEAD( att )   (*((CHTM*)HTM_TAG_FACTORY( HTM_TAG_HEAD )))
-#define BODY( att )   (*((CHTM*)HTM_TAG_FACTORY( HTM_TAG_BODY )))
-
-#endif
 
 #endif /* HTM_INC_HTM_H_ */

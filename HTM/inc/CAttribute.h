@@ -13,7 +13,7 @@ private:
 
 protected:
 	CAttribute* chain;
-	attID_t     attr;
+//	attID_t     attr;
 	char*       value;
 
 public:

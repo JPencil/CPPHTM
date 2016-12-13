@@ -10,28 +10,33 @@
 
 #include "CTag.h"
 
-class CDocument {
+class CDocument : public CHTM {
 private:
 	static CDocument* sHead;
 	static CDocument* sTail;
-	static CDocument* sFifo;
+	static CDocument* sCurr;
 
 protected:
 	docID_t    did;
 	CDocument* chain;
-	CDocument* fifo;
 
 	CTag*      tags;
 	CTag*      last;
-	CTag*      stack;
+	CTag*      fifo;
+
+	CDocument* find( docID_t did );
 
 	void  push( CTag* tag );
 	CTag* pop();
 
 public:
+	static CDocument* Active( );
+	static CDocument* Manager( docID_t did );
 	CDocument( docID_t did );
-	CTag* addTag( tagID_t tid, usrID_t uid );
-	CTag* findTag( tagID_t tid );
+
+	CDocument open();
+	CTag* addTag( usrID_t uid , tagID_t tid);
+	CTag* findTag( usrID_t uid );
 	virtual ~CDocument();
 };
 

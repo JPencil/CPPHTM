@@ -18,14 +18,14 @@ static const char* sTags[] = {
 		 NULL
 };
 
-
-CTag::CTag( tagID_t tid, usrID_t uid ) {
+CTag::CTag( usrID_t uid, tagID_t tid, CHTM* doc  ) {
 	this->uid    = uid;
 	this->tid    = tid;
 	this->chain  = NULL;
-	this->fifo   = NULL;
-	this->parent = NULL;
+	this->next   = NULL;
+	this->doc    = doc;
 
+	::Print("\nTag %d created...", uid);
 }
 
 CTag* CTag::find( usrID_t uid ) {
@@ -45,14 +45,6 @@ CTag* CTag::connect( CTag* tag ) {
 CTag CTag::print() {
 	printf("\n%s", htmlTag() );
 	if( chain ) chain->print();
-	return *this;
-}
-
-CTag CTag::open() {
-	return *this;
-}
-
-CTag CTag::close() {
 	return *this;
 }
 
